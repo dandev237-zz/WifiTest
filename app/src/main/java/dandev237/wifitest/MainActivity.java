@@ -14,12 +14,22 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Actividad principal de la aplicación
+ *
+ * Autor: Daniel Castro García
+ * Email: dandev237@gmail.com
+ * Fecha: 14/05/2016
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     WifiManager wifiManager;
     WifiScanReceiver wifiReceiver;
+
     String wifiList[];
     List<WifiData> wifiDataList;
+
     ListView wifiListView;
 
 
@@ -27,11 +37,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         wifiListView = (ListView) findViewById(R.id.wifiListView);
+
         wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         wifiReceiver = new WifiScanReceiver();
 
+        //El escaneo comienza al abrir la aplicación
         wifiManager.startScan();
     }
 
@@ -47,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    /**
+     * BroadcastReceiver personalizado para recibir las redes WiFi detectadas y poder
+     * trabajar con sus datos.
+     */
     private class WifiScanReceiver extends BroadcastReceiver{
 
         @Override

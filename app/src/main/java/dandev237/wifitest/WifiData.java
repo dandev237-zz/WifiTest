@@ -3,12 +3,11 @@ package dandev237.wifitest;
 import android.net.wifi.ScanResult;
 import android.os.SystemClock;
 
-import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
  * Clase para modelar toda la información de una red wifi (Objeto ScanResult)
- * <p/>
+ *
  * Autor: Daniel Castro García
  * Email: dandev237@gmail.com
  * Fecha: 14/05/2016
@@ -38,7 +37,7 @@ public class WifiData {
     }
 
 
-    /*
+    /* TODO: Buscar otro método de determinación de distancias. Este no funciona del todo bien.
      * Trilateración para determinar la distancia al AP/dispositivo a partir del
      * nivel de la señal.
      *
@@ -59,7 +58,7 @@ public class WifiData {
     @Override
     public String toString(){
         return "BSSID: " + bssid + ", SSID: " + ssid + ", Capabilities: " + capabilities + /*", centerFreq0: " + centerFreq0 + ", centerFreq1: " + centerFreq1 +
-                ", Channel Width: " + channelWidth + */", Frequency: " + frequency + ", Signal level: " + level + ", Timestamp: " + timestamp /*". Distance: " +
+                ", Channel Width: " + channelWidth + */", Frequency: " + frequency + " MHz, Signal level: " + level + " dB, Timestamp: " + timestamp /*". Distance: " +
                 distance + "."*/;
     }
 }
