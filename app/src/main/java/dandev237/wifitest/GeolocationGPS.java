@@ -67,11 +67,14 @@ public class GeolocationGPS implements ConnectionCallbacks, OnConnectionFailedLi
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        //Comprobación de permisos en runtime (Necesario porque ACCESS_FINE_LOCATION y ACCESS_COARSE_LOCATION son permisos "Dangerous")
-        if (ActivityCompat.checkSelfPermission(appContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat
-                .checkSelfPermission(appContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        //Comprobación de permisos en runtime (Necesario porque ACCESS_FINE_LOCATION y ACCESS_COARSE_LOCATION son permisos
+        // "Dangerous")
+        if (ActivityCompat.checkSelfPermission(appContext, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(appContext, Manifest
+                .permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(mainActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission
+            ActivityCompat.requestPermissions(mainActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission
                     .ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_FINE);
         }
 

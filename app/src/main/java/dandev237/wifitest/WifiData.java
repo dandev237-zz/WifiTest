@@ -27,7 +27,8 @@ public class WifiData {
         frequency = scan.frequency;
         level = scan.level;
 
-        long scanResultTimestampInMillis = System.currentTimeMillis() - SystemClock.elapsedRealtime() + (scan.timestamp / 1000);
+        long scanResultTimestampInMillis = System.currentTimeMillis() - SystemClock.elapsedRealtime()
+                + (scan.timestamp / 1000);
         timestamp = new Date(scanResultTimestampInMillis);
     }
 

@@ -98,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 wifiList[i] = wifiDataList.get(i).toString();
             }
 
-            ArrayAdapter<String> wifiAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, wifiList);
+            ArrayAdapter<String> wifiAdapter = new ArrayAdapter<>(getApplicationContext(),
+                    android.R.layout.simple_list_item_1, wifiList);
             wifiListView.setAdapter(wifiAdapter);
         }
     }
