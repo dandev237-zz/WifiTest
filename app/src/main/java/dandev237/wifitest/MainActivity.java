@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     WifiManager wifiManager;
     WifiScanReceiver wifiReceiver;
+
     GeolocationGPS geoGPS;
 
     String wifiList[];
@@ -43,9 +44,16 @@ public class MainActivity extends AppCompatActivity {
         wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         wifiReceiver = new WifiScanReceiver();
 
+        geoGPS = new GeolocationGPS(getApplicationContext(), this);
+
         //El escaneo comienza al abrir la aplicación
-        geoGPS = new GeolocationGPS(getApplicationContext());
         wifiManager.startScan();
+    }
+
+    @Override
+    protected void onStart(){
+        geoGPS.connect();
+        super.onStart();
     }
 
     @Override
@@ -58,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause(){
         unregisterReceiver(wifiReceiver);
         super.onPause();
+    }
+
+    @Override
+    protected void onStop(){
+        geoGPS.disconnect();
+        super.onStop();
     }
 
     /**

@@ -6,7 +6,8 @@ import android.os.SystemClock;
 import java.util.Date;
 
 /**
- * Clase para modelar toda la información de una red wifi (Objeto ScanResult)
+ * Clase para modelar toda la información de una red wifi (Objeto ScanResult), además de atributos adicionales
+ * empleados en otras clases del proyecto.
  *
  * Autor: Daniel Castro García
  * Email: dandev237@gmail.com

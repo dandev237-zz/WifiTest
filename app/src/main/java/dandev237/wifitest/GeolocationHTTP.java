@@ -19,6 +19,8 @@ import java.util.List;
  * Clase que tiene como objetivo la geolocalización del usuario empleando la Google Maps Geolocation
  * API (geolocalización mediante petición HTTP empleando información sobre los puntos de
  * acceso detectados).
+ * Esta clase hace uso del framework Volley.
+ *
  * Referencia: https://developers.google.com/maps/documentation/geolocation/intro?hl=es#overview
  * <p>
  * Autor: Daniel Castro García
