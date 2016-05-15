@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     WifiManager wifiManager;
     WifiScanReceiver wifiReceiver;
+    GeolocationGPS geoGPS;
 
     String wifiList[];
     List<WifiData> wifiDataList;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         wifiReceiver = new WifiScanReceiver();
 
         //El escaneo comienza al abrir la aplicación
+        geoGPS = new GeolocationGPS(getApplicationContext());
         wifiManager.startScan();
     }
 
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
             for (ScanResult s : scanResultList) {
                 WifiData w = new WifiData(s);
+                w.setLatitude(geoGPS.getLatitude());
+                w.setLongitude(geoGPS.getLongitude());
                 wifiDataList.add(w);
             }
 

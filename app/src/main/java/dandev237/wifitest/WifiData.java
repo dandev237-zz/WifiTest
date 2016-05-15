@@ -14,51 +14,46 @@ import java.util.Date;
  */
 public class WifiData {
 
-    String bssid, ssid, capabilities;
-    int centerFreq0, centerFreq1, channelWidth, frequency, level;
-    Date timestamp;
-    String distance;
+    private String bssid, ssid, capabilities;
+    private int frequency, level;
+    private double latitude, longitude;
+    private Date timestamp;
 
     public WifiData(ScanResult scan){
         bssid = scan.BSSID;
         ssid = scan.SSID;
         capabilities = scan.capabilities;
-        //centerFreq0 = scan.centerFreq0; //Centro de frecuencia del primer segmento
-        //centerFreq1 = scan.centerFreq1; //Centro de frecuencia del segundo segmento
-        //channelWidth = scan.channelWidth;
         frequency = scan.frequency;
         level = scan.level;
 
         long scanResultTimestampInMillis = System.currentTimeMillis() - SystemClock.elapsedRealtime() + (scan.timestamp / 1000);
         timestamp = new Date(scanResultTimestampInMillis);
-
-        /*DecimalFormat df = new DecimalFormat("#.##");
-        distance = df.format(trilaterate(level, frequency));*/
     }
-
-
-    /*
-     * Trilateración para determinar la distancia al AP/dispositivo a partir del
-     * nivel de la señal.
-     *
-     * Para esto se ha empleado la fórmula para el cálculo del Free-space path loss (FSPL)
-     * Referencia:
-     *
-     * @param level Nivel de la señal, en dB.
-     * @param freq  Frecuencia de la señal, en MHz
-     */
-
-    /*
-    public double trilaterate(double level, double freq){
-        double exp = (27.55 - (20 * Math.log10(freq)) + Math.abs(level)) / 20.0;
-        return Math.pow(10.0, exp);
-    }
-    */
 
     @Override
     public String toString(){
-        return "BSSID: " + bssid + ", SSID: " + ssid + ", Capabilities: " + capabilities + /*", centerFreq0: " + centerFreq0 + ", centerFreq1: " + centerFreq1 +
-                ", Channel Width: " + channelWidth + */", Frequency: " + frequency + " MHz, Signal level: " + level + " dB, Timestamp: " + timestamp /*". Distance: " +
-                distance + "."*/;
+        return "BSSID: " + bssid + ", SSID: " + ssid + ", Capabilities: " + capabilities + ", Frequency: "
+                + frequency + " MHz, Signal level: " + level + " dB, Timestamp: " + timestamp
+                + ", Position: (" + latitude + "º, " + longitude + "º)";
+    }
+
+    //Getters
+
+    public String getBssid() {
+        return bssid;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    //Setters
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }
