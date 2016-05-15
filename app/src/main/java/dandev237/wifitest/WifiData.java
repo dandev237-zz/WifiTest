@@ -37,7 +37,7 @@ public class WifiData {
     }
 
 
-    /* TODO: Buscar otro método de determinación de distancias. Este no funciona del todo bien.
+    /*
      * Trilateración para determinar la distancia al AP/dispositivo a partir del
      * nivel de la señal.
      *
