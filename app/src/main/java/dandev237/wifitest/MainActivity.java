@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     WifiScanReceiver wifiReceiver;
 
     GeolocationGPS geoGPS;
+    //GeolocationHTTP geoHTTP;
 
     String wifiList[];
     List<WifiData> wifiDataList;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         wifiReceiver = new WifiScanReceiver();
 
         geoGPS = new GeolocationGPS(getApplicationContext(), this);
+        //geoHTTP = new GeolocationHTTP(getApplicationContext());
 
         //El escaneo comienza al abrir la aplicación
         wifiManager.startScan();
@@ -92,6 +94,17 @@ public class MainActivity extends AppCompatActivity {
                 w.setLongitude(geoGPS.getLongitude());
                 wifiDataList.add(w);
             }
+
+            //Determinar localización mediante HTTP con lista de datos ya completa
+            /*try {
+                geoHTTP.postRequest(getApplicationContext(), wifiDataList);
+                for(WifiData w: wifiDataList){
+                    w.setLatitude(GeolocationHTTP.getLatitude());
+                    w.setLongitude(GeolocationHTTP.getLongitude());
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }*/
 
             for (int i = 0; i < scanResultList.size(); i++) {
                 //wifiList[i] = (scanResultList.get(i)).toString();
